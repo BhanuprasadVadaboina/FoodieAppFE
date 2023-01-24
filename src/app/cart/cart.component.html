@@ -1,0 +1,32 @@
+<div>
+    <img src="./assets\mae-mu-Ey2Y2vAmx7Q-unsplash.jpg" style="width: 100%;height: 717px;">
+    <div class="bill2">
+       <div style="margin: 20px;font-weight:bold;font-size: medium;">Delivery Adress:</div>
+       <span style="margin-left: 30px;font-size: medium;font-weight:500;">mobileNo: {{phoneNo}}</span>
+       <div style="display: flex;flex-wrap: wrap;font-size: medium;font-weight:500;margin-left: 30px;">
+       <div>{{houseNo}}</div>,<div>{{street}}</div>,<div>{{pinCode}}</div>,<div>{{city}}</div>,<div>{{state}}</div>
+       </div>
+       <div style="margin-left: 250px;margin-top: 50px;">
+         <button style="background-color:rgb(175, 241, 110);width: 100px;height: 40px;border: 0px;" (click)="pay()">Pay {{total | currency:"&#8377;"}}</button>
+       </div>
+                <!-- <div style="background-color:white;margin-right: 100px;margin-top: 30px;width: 250px;" *ngIf="done==true">
+                    <mat-icon style="color:greenyellow;font-weight:bolder">done</mat-icon>Ordered Placed Successfully..
+                </div> -->
+    </div>
+    
+
+    <div class="bill">
+        <div style="margin-left: 240px;margin-top: 30px;font-weight: 900;font-size:xx-large;margin-bottom: 10px;background-color: white;">INVOICE</div>
+          <div><span style="margin: 10px;">S.No</span> <span style="margin: 35px;margin-top: 20px;">items</span>   <span style="margin: 100px;">price</span> <span style="margin: 10px;">quantity</span>  <span style="margin: 60px;">TotalPrice</span></div>
+        <div *ngFor="let order of orders" style="display: flex;margin-top: 10px;">
+            <div style="margin-left: 15px;">{{order.sno}}</div><div style="margin-left: 60px;color: black;font-weight:bold;width: 100px;">{{order.foodName}}</div> <div style="margin-left: 80px;font-weight:bolder;width: 80px;">{{order.price}}</div>
+             <div style="margin-left: 60px;width: 60px;font-weight:bolder;">{{order.quantity}}</div>  <div style="margin-left: 80px;font-weight:bold;">{{order.totalPrice}}</div> <br>
+                    
+        </div>
+        <hr>
+        <div style="display: flex;margin-left: 460px;">
+            <span style="font-weight: bolder;">Total:</span>
+            <div style="width: 60px;font-weight:bolder;margin-left: 50px;">{{total}}</div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+.bill{
+    height: 600px;width: 600px;background-color:white;
+    margin-left:700px;margin-top: 10px;
+    position: fixed;position:absolute;top:80px;opacity:0.4;
+}
+.bill2{
+    height: 200px;width: 600px;background-color:whitesmoke;
+    margin-left:50px;margin-top: 150px;
+    position: fixed;position:absolute;top:80px;opacity: 0.95;
+}
+hr{
+    width: 100px;
+    margin-left: 490px;
+    background-color: black;
+    height: 1px;
+}

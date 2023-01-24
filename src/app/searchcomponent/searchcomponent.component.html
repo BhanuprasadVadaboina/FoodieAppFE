@@ -1,0 +1,34 @@
+<div class="slider" style="justify-content:center">
+  <div class="centered" >
+   Discover the best food & drinks
+   <div style="border:ghostwhite; ">
+    <input matInput type="text"   placeholder='search by city' style="width:100% ;color:black;opacity: 0.7;border-radius: 10px;height: 25px;"  #searchTxt >
+    <button mat-icon-button style="margin-left: -40px;" >
+      <mat-icon  type="submit" matTooltip="search" style="color: black;">search</mat-icon>
+    </button>
+
+</div>
+  </div>
+</div>
+<div style="display:flex;flex-wrap: wrap;margin-top: 50px;">
+    <div *ngFor= "let restaurant  of  res " style="margin-left: 70px;margin-bottom: 30px;display: flex;flex-wrap: wrap;" >
+      <mat-card class="example-card"  style="height:360px ;width: 248px;">
+        <a routerLink="/items" style="text-decoration:none ;" (click)="items(restaurant)">   
+          <span>   
+            <img mat-card-image src={{restaurant.image}} style="width:280px;height: 200px;border-radius: 10px ;" >
+          </span>
+        </a>
+            <div>
+                <mat-card-title style="font-family:Comfortaa ;height: 45px;font-weight:bolder;font-size:21.5px;">{{restaurant.restaurantName}}</mat-card-title>
+                <mat-card-subtitle style="font-family:Comfortaa ;"><strong>{{restaurant.address.area}},{{restaurant.address.city}}</strong></mat-card-subtitle>
+                <mat-card-subtitle style="font-family:Comfortaa ;height: 15px;">{{restaurant.foodType}}</mat-card-subtitle>
+                <div style="display: flex;padding-top: 25px;">
+                <div class="spn"><mat-icon class="icon">star</mat-icon>{{restaurant.rating}}</div>
+                <button (click)="favorite(restaurant.restaurantId)" mat-button style="margin-left: 140px;">
+                 <mat-icon class="favorite" *ngIf="restaurant.restaurantId!=resId || status==false">favorite_border</mat-icon> <mat-icon class="favorite" *ngIf="restaurant.restaurantId==resId && status==true">favorite</mat-icon>
+                </button>
+            </div>       
+      </div>
+    </mat-card>
+     </div>
+    

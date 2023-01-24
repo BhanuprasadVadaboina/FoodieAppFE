@@ -1,0 +1,28 @@
+
+<mat-toolbar>
+  <img src="./assets/foodie-logo.png" height="150px" width="150px">
+    <span style="font-size:xx-large; margin-left:10px; font-family:Abril Fatface;" routerLink="resturant">FoodExplorer</span>
+   
+    <button style="margin-left:61%; background:none; border:none; margin-top: 10px;" routerLink="/cart" > <mat-icon mat-icon-button class="icon-display" style="color: white;" *ngIf="role!='ADMIN_USER' && role!=null">shopping_cart</mat-icon></button>&nbsp;
+   
+      <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+          <div [matMenuTriggerFor]="menu" style="display: flex;padding-top: 5px;" *ngIf="name!=null"><mat-icon style="padding-top: 7px">perm_identity</mat-icon><div style="font-size:21px;padding-left: 5px;">{{name}}</div></div>
+          <a routerLink="/login"><div *ngIf="name==null" style="display: flex;" ><mat-icon style="padding-top: 7px">perm_identity</mat-icon><div style="font-size:21px;padding-left: 5px;" *ngIf="name==null">Sign In</div></div></a>
+      </button>
+          
+      <mat-menu #menu="matMenu">
+          <button style="font-family:Encode Sans;" *ngIf="!isLoggedIn" routerLink="login" mat-menu-item><mat-icon>account_circle</mat-icon>Login</button>
+          <div style="display:inline-flex"> <img *ngIf="isLoggedIn" src="{{profilePic}}" style="border-radius: 50%;width: 30px;height:30px"  /> &nbsp;&nbsp;
+            <h1 style="color:white" *ngIf="isLoggedIn"> {{name}}</h1>
+             </div>
+          <button style="font-family:Encode Sans;" mat-menu-item   *ngIf="isLoggedIn" routerLink="/favourite"><mat-icon  mat-icon-button class="icon-display" >favorite</mat-icon>Favourite</button>
+          <button style="font-family:Encode Sans;"  mat-menu-item  *ngIf="isLoggedIn" (click)="profile()" ><mat-icon>create</mat-icon>Edit Profile</button>
+            <button style="font-family:Yanone Kaffeesatz ;" class="button3" mat-button  *ngIf="isLoggedIn" (click)="logout()">Sign out</button>
+        </mat-menu>
+    
+</mat-toolbar>
+<!-- <app-restaurant></app-restaurant> -->
+<!-- <router-outlet></router-outlet> -->
+<div style="margin-top:50px ; height: 100%; width: 100%;">
+  <router-outlet></router-outlet>
+  </div>

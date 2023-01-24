@@ -1,0 +1,92 @@
+<body class="bg-img">
+    <div class="login-container">
+        <div class="login-content">
+            <mat-toolbar class="login-toolbar">REGISTER</mat-toolbar>
+               <mat-card>
+                      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                           <mat-form-field>
+                               <mat-icon matPrefix>email</mat-icon>
+                               <input autofocus type="email" matInput placeholder="Email *" formControlName="emailId">
+                               <mat-hint align="end"
+                          *ngIf="registerForm.get('emailId')?.hasError('required') && (registerForm.get('emailId')?.dirty || registerForm.get('emailId')?.touched)">
+                        Give valid email</mat-hint>
+                           </mat-form-field> &nbsp;&nbsp;
+                           <mat-form-field>
+                               <mat-icon matPrefix>person_outline</mat-icon>
+                               <input autofocus type="text" matInput placeholder="Username *" formControlName="fullName">
+                               <mat-hint align="end" *ngIf="fullName.invalid">firstname only alphabet not number</mat-hint>
+                          </mat-form-field>
+                          <mat-form-field>
+                                <mat-icon matPrefix>lock_outline</mat-icon>
+                                <input type="password" autocomplete="false" matInput placeholder="Password *" formControlName="password">
+                                <mat-hint align="end"
+                                *ngIf="registerForm.get('password')?.hasError('required') && (registerForm.get('password')?.dirty || registerForm.get('password')?.touched)">
+                                password is Mandatory</mat-hint>
+                          </mat-form-field>&nbsp;&nbsp;
+                          <div formGroupName="address">
+                          <mat-form-field>
+                            <input  placeholder="Enter House No" autofocus type="text" autocomplete="false" matInput formControlName="houseNo">
+                            <mat-hint align="end"
+                               *ngIf="registerForm.get('address.houseNo')?.hasError('required') && (registerForm.get('address.houseNo')?.dirty || registerForm.get('address.houseNo')?.touched)">
+                               house number is Mandatory</mat-hint>
+                       </mat-form-field>&nbsp;&nbsp;
+                       <!-- <mat-hint align="end" *ngIf="houseNo.invalid">houseNo is must</mat-hint>  -->
+                       <mat-form-field  class="example-full-width">
+                        <mat-select [(ngModel)]="selectedValue" autofocus type="text"  placeholder="Enter State" autocomplete="false" matInput formControlName="state">
+                           <mat-option *ngFor="let city of cities" [value]="city.value">
+                            {{city.viewValue}}
+                          </mat-option>
+                        </mat-select>
+                        <mat-hint align="end"
+                        *ngIf="registerForm.get('address.state')?.hasError('required') && (registerForm.get('address.state')?.dirty || registerForm.get('address.state')?.touched)">
+                        state name is Mandatory</mat-hint>
+               </mat-form-field>&nbsp;&nbsp;
+                       <!-- <mat-hint align="end" *ngIf="state.invalid">state is must</mat-hint>  -->
+                        <mat-form-field>
+                            <input autofocus type="text"  placeholder="Enter Steet Name" autocomplete="false" matInput formControlName="street">
+                            <mat-hint align="end"
+                            *ngIf="registerForm.get('address.street')?.hasError('required') && (registerForm.get('address.street')?.dirty || registerForm.get('address.street')?.touched)">
+                            street name is Mandatory</mat-hint>
+                      </mat-form-field> &nbsp;&nbsp;
+                      <!-- <mat-hint align="end" *ngIf="street.invalid">street is must</mat-hint>  -->
+                        <mat-form-field>
+                            <input autofocus type="text"  placeholder="Enter Your City" autocomplete="false" matInput formControlName="city">
+                            <mat-hint align="end"
+                            *ngIf="registerForm.get('address.city')?.hasError('required') && (registerForm.get('address.city')?.dirty || registerForm.get('address.city')?.touched)">
+                            city name is Mandatory</mat-hint>
+                      </mat-form-field> &nbsp;&nbsp;
+                      <!-- <mat-hint align="end" *ngIf="city.invalid">state is must</mat-hint>  -->
+                    <mat-form-field>
+                            <input autofocus  placeholder="Enter ZipCode" type="text" autocomplete="false" matInput formControlName="pinCode">
+                            <!-- <mat-hint align="end"
+                            *ngIf="registerForm.get('address.pinCode')?.hasError('required') && (registerForm.get('address.pinCode')?.dirty || registerForm.get('address.pinCode')?.touched)">
+                            pincode number is Mandatory</mat-hint> -->
+                            <mat-hint align="end"  *ngIf="registerForm.get('address.pinCode')?.invalid && registerForm.get('address.pinCode')?.dirty || registerForm.get('address.pinCode')?.touched">
+                                Zipcode must be 6 digits</mat-hint>
+                    </mat-form-field> &nbsp;&nbsp;
+                </div>
+                    <mat-form-field>
+                          <mat-icon matPrefix>call</mat-icon>
+                          <input autofocus type="text"  placeholder="Enter Your Contact Number" autocomplete="false" matInput formControlName="mobileNo">
+                          <!-- <mat-hint align="end" *ngIf="mobileNo.invalid">Mobile number is must</mat-hint>  -->
+                          <mat-hint align="end"
+                          *ngIf="registerForm.get('mobileNo')?.hasError('required') && (registerForm.get('mobileNo')?.dirty || registerForm.get('mobileNo')?.touched)">
+                          mobile number is Mandatory</mat-hint>
+                          <mat-hint align="end"  *ngIf="mobileNo.invalid && registerForm.get('mobileNo')?.dirty">
+                          mobile number Must be 10 digits</mat-hint>
+                 </mat-form-field><br>
+                     <div style="margin-top: 10px;">
+                        <div class="col-md-12">
+                            <label class="labels">Picture </label>
+                            <input type="file"  class="form-control"   id="fileUpload"   formContronName="image"
+                            multiple="multiple" accept="image/*"   (change)="onChange($event,$event)"   (change)="changeImage($event)"    />
+                            </div>
+                            </div>
+                <div class="socialMediaFlex">
+                <button style="width:50%" type="submit" mat-raised-button >Submit</button>
+                 </div>
+                </form>
+            </mat-card>
+        </div>
+    </div>
+    </body>

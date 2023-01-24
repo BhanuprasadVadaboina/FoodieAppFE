@@ -1,0 +1,71 @@
+
+<div style="height: 720px;">
+    <body class="bg-img">
+    <div class="login-container">
+        <div class="login-content">
+
+            <mat-toolbar class="login-toolbar">Restaurant Details</mat-toolbar>
+            <mat-card>
+
+                <form [formGroup]="restaurantForm" (ngSubmit)="save()">
+
+                    <img [src]="" height="80px" width="80px"> <br>
+                        <div class="col-md-12">
+                            <label class="labels">Picture </label>
+                            <input type="file"  class="form-control"   id="fileUpload"   formContronName="image"
+                            multiple="multiple" accept="image/*"   (change)="onChange($event,$event)"   (change)="changeImage($event)" style="width: 350px;" />
+                            </div>
+
+                    Name: <mat-form-field>
+                        <input autofocus type="text" matInput placeholder="Enter Restaurant Name"
+                            formControlName="restaurantName">
+                    </mat-form-field> &nbsp;&nbsp; &nbsp;&nbsp;
+                    <br>
+                    <div formGroupName="address">
+                    <span>Address: </span>
+                    <mat-form-field>
+                        <input placeholder="Enter Name of city" autofocus type="text" autocomplete="false" matInput
+                            formControlName="city">
+                    </mat-form-field>&nbsp;&nbsp;
+
+                    <mat-form-field>
+                        <input placeholder="Street Name" autofocus type="text" autocomplete="false" matInput
+                            formControlName="area">
+                    </mat-form-field>&nbsp;&nbsp;
+
+                    <mat-form-field>
+                        <input placeholder="Enter zipcode" autofocus type="text" autocomplete="false" matInput
+                            formControlName="pinCode">
+                            <mat-hint align="end"  *ngIf="restaurantForm.get('address.pinCode')?.invalid && restaurantForm.get('address.pinCode')?.dirty || restaurantForm.get('address.pinCode')?.touched">
+                                Zipcode must be 6 digits</mat-hint>
+                    </mat-form-field><br>
+                    <mat-form-field  class="example-full-width">
+                        <mat-select [(ngModel)]="selectedValue" autofocus type="text"  placeholder="Enter State" autocomplete="false" matInput formControlName="state">
+                           <mat-option *ngFor="let city of cities" [value]="city.value">
+                            {{city.viewValue}}
+                          </mat-option>
+                        </mat-select>
+                        <mat-hint align="end"
+                        *ngIf="restaurantForm.get('address.state')?.hasError('required') && (restaurantForm.get('address.state')?.dirty || restaurantForm.get('address.state')?.touched)">
+                        state name is Mandatory</mat-hint>
+               </mat-form-field>&nbsp;&nbsp;<br>
+                    </div>
+                    <mat-form-field>
+                        <input placeholder="Type of Restaurant" autofocus type="text" autocomplete="false" matInput
+                            formControlName="foodType">
+                    </mat-form-field> &nbsp;&nbsp;
+                    <br>
+                    <div class="socialMediaFlex">
+                        <button style="width:50%" type="submit" mat-raised-button>Submit</button>
+                    </div>
+                   
+                </form> 
+                <div style="margin-left: 600px;margin-top: 10px;">
+                    <button style="width:10%"  mat-raised-button (click)="next()">Next</button>
+                </div>
+                </mat-card>
+        </div>
+    </div>
+</body>
+</div>
+

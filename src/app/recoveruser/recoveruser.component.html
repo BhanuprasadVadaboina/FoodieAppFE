@@ -1,0 +1,32 @@
+<body class="bg-img">
+<div style="margin-top:20px;margin-left:auto;margin-right:auto;width:800px;background-color:#f48d82;padding: 50px; 
+border-radius: 15px;" *ngIf="sixteenCde==0"><div style="margin-left: 350px;font-size:medium;font-weight:800;">Reset Password</div>
+<form [formGroup]="recoverForm" (ngSubmit)="recover()" style="padding-top: 10px;">
+    email Id:<mat-form-field appearance="outline">
+      <mat-label>EmailId</mat-label>
+      <input matInput formControlName="emailId"/>
+      
+  </mat-form-field><br>
+  <button type="submit" mat-raised-button color="primary" >Send email</button>    
+  </form>
+  </div>
+
+  <div style="margin-top:50px;margin-left:auto;margin-right:auto;width:800px;background-color:#f48d82;padding:20px; 
+border-radius: 15px;" *ngIf="sixteenCde!=0">
+<form [formGroup]="recoverpswrd" (ngSubmit)="recvrpswrd()">
+  email Id:<mat-form-field appearance="outline">
+    <input matInput formControlName="emailId"/>
+   
+</mat-form-field><br>
+    One Time Password:<mat-form-field appearance="outline">
+      <input matInput formControlName="otp" />
+      
+  </mat-form-field><br>
+ Set password:<mat-form-field appearance="outline">
+    <input matInput formControlName="password"/>
+   
+</mat-form-field><br>
+  <button type="submit" mat-raised-button color="primary" >Reset</button>    
+  </form>
+  </div>
+</body>

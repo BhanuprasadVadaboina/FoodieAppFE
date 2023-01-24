@@ -1,0 +1,139 @@
+
+
+    <div class="login-container" *ngIf="role=='ADMIN_USER' && previous!=true">
+        <div class="login-content" >
+
+            <mat-toolbar class="login-toolbar">Item Details</mat-toolbar>
+            <mat-card>
+                <form [formGroup]="itemForm" (ngSubmit)="saveFood()" >
+                 <mat-form-field>
+                        <input autofocus type="text" matInput placeholder="Cuisine category"
+                            formControlName="itemName" >
+                    </mat-form-field> &nbsp;&nbsp; &nbsp;&nbsp;
+                    <br>
+                    <span>cuisine details </span>
+                    <div formGroupName="foodForm" *ngFor="let no of NoofFood" style="display: flex;">
+                   
+                    <mat-form-field>
+                        <input placeholder="Enter FoodName" autofocus type="text" autocomplete="false"  matInput
+                            formControlName="foodName">
+                    </mat-form-field>&nbsp;&nbsp;
+
+                    <mat-form-field>
+                        <input placeholder="Enter FoodPrice " autofocus type="text" autocomplete="false" matInput
+                            formControlName="foodPrice">
+                    </mat-form-field>&nbsp;&nbsp;
+            
+                    <mat-form-field>
+                        <input placeholder="Enter Description" autofocus type="text" autocomplete="false" matInput
+                            formControlName="description">
+                    </mat-form-field> &nbsp;&nbsp;
+                    <mat-form-field>
+                        <input placeholder="upload cuisine image google url" autofocus type="text" autocomplete="false" matInput
+                            formControlName="image">
+                    </mat-form-field> &nbsp;&nbsp;
+                    </div>
+              
+                    <div class="socialMediaFlex">
+                        <button style="width:50%" type="submit" mat-raised-button>Submit</button>
+                       
+                    </div>
+                </form>
+                <button style="width:10%" type="submit" mat-raised-button (click)="next()">AddMore</button>
+
+                </mat-card>
+        </div>
+    </div>
+
+    <!-- <div class="login-container" *ngIf="role=='ADMIN_USER' && previous==true" >
+        <div class="login-content" *ngFor="let item of previousformdta" >
+
+            <mat-toolbar class="login-toolbar" >Item Details</mat-toolbar>
+            <mat-card>
+                <form [formGroup]="itemForm" (ngSubmit)="saveFood()" >
+                 <mat-form-field>
+                        <input autofocus type="text" matInput placeholder="Cuisine category"
+                            formControlName="itemName" value="item.itemName">{{item.itemName}}
+                    </mat-form-field> &nbsp;&nbsp; &nbsp;&nbsp;
+                    <br>
+                    <span>cuisine details </span>
+                    <div formGroupName="foodForm" *ngFor="let food of item.foodList" style="display: flex;">
+                   
+                    <mat-form-field>
+                        <input placeholder="Enter FoodName" autofocus type="text"  autocomplete="false"  matInput
+                            formControlName="foodName" value="food.foodName">
+                    </mat-form-field>&nbsp;&nbsp;
+
+                    <mat-form-field>
+                        <input placeholder="Enter FoodPrice " autofocus type="text" autocomplete="false" matInput 
+                            formControlName="foodPrice" value="food.foodPrice">
+                    </mat-form-field>&nbsp;&nbsp;
+            
+                    <mat-form-field>
+                        <input placeholder="Enter Description" autofocus type="text" autocomplete="false" matInput 
+                            formControlName="description" value="food.description">
+                    </mat-form-field> &nbsp;&nbsp;
+                    <mat-form-field>
+                        <input placeholder="upload cuisine image google url" autofocus type="text" autocomplete="false" matInput 
+                            formControlName="image" value="food.image">
+                    </mat-form-field> &nbsp;&nbsp;
+                    </div>
+              
+                    <div class="socialMediaFlex">
+                        <button style="width:50%" type="submit" mat-raised-button>Submit</button>
+                       
+                    </div>
+                </form>
+                <button style="width:10%" type="submit" mat-raised-button (click)="next()">AddMore</button>
+
+                </mat-card>
+        </div><br>
+    </div> -->
+
+
+
+
+  <div *ngIf="role!='ADMIN_USER'">
+  <div style="background-color:rgb(70, 78, 81) ;margin-top:80px;display: flex;height: 250px;">
+  <img mat-card-image src={{restrnt.image}} style="width:300px;height: 200px;border-radius: 10px ;margin-left: 180px;margin-top: 25px;" >
+      <div style="font-weight:500 ;font-size:40px;color: rgb(246, 219, 223);font-family:Garamond, serif ;font-stretch:extra-expanded;margin: 55px;">{{restrnt.restaurantName}}<br/><br>
+  <span style="color:rgb(173, 171, 171) ;font-size:18px;font-style:  Arial, Helvetica, sans-serif;margin-left: 5px;">{{restrnt.foodType }}<br/><br>  {{restrnt.address.area}}, {{restrnt.address.city}}  </span><br><br>
+  <span style="font-size:20px"><mat-icon class="icon">star</mat-icon>{{restrnt.rating}}</span>
+      </div>
+
+      <div style="margin-left: 25%; margin-top:220px;border:ghostwhite;">
+        <form (ngSubmit)="searchingItems(searchTxt.value)" style="display: flex;">
+        <input matInput type="text"   placeholder="     Search Item name" style="width:100% ;color: black;border-radius: 10px;"   #searchTxt >
+        <button mat-icon-button style="margin-left: -40px;" >
+       <mat-icon type="submit" matTooltip="search" class="icon-display" style="color: black;">search</mat-icon>
+       </button>
+      </form>
+      </div>
+
+  </div>
+        <div *ngFor="let i of restrnt.items">
+        <mat-card class="example-card">
+        <mat-card-title-group style="justify-content: left;">
+          <div>
+            <mat-card-title style="font-family:Comfortaa ;"><strong>{{i.itemName}}</strong></mat-card-title><br> 
+            <div *ngFor="let fd of i.foodList" >
+                    <div class="food">
+                        <img  src={{fd.image}}  width="200px" height="200px" style="margin-top:5px ;">
+                        <div style="width:530px ;margin-left: 20px;margin-top: 10px;">
+                            <span style="width:510px ;height: 80px;"><h2>{{fd.foodName}}</h2></span><br>
+                            <span style="width: 550px;height: 50px;">{{fd.description}}</span><br><br>
+                            {{fd.foodPrice | currency:"&#8377;"}}
+                        </div>
+                    </div>
+                        <div class="cart"><button class="crt" (click)="add2crt(fd)">+</button><span *ngIf="foodname!=fd.foodName">ADD</span><span *ngIf="foodname==fd.foodName">{{count}}</span><button class="crt" (click)="remove(fd)">-</button></div>
+                        <hr>
+            </div>
+          </div>
+        </mat-card-title-group>
+        </mat-card>
+        </div>
+    </div>
+
+        
+
+  

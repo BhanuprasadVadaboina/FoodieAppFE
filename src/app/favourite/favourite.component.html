@@ -1,0 +1,32 @@
+<div class="slider" style="justify-content:center">
+    <div class="centered" >
+     We Know You Love it!
+    </div>
+    <div class="centered1" >
+     Browse Your favorite resturants & feast like never before
+  </div>
+  </div>
+<div style="display:flex;flex-wrap: wrap;margin-top: 20px;" >
+    <div *ngFor= "let restaurant  of  getfavrites " style="margin-left: 70px;margin-bottom: 30px;display: flex;flex-wrap: wrap;" >
+        <mat-card class="example-card"  style="height:340px ;width: 248px;">
+            <a routerLink="/items" style="text-decoration:none ;" (click)="items(restaurant)">   
+              <span>   
+                <img mat-card-image src={{restaurant.image}} style="width:280px;height: 200px;border-radius: 10px ;" >
+              </span>
+            </a>
+                <div>
+                    <mat-card-title style="font-family:Comfortaa ;height: 45px;font-weight:bolder;font-size:21.5px;">{{restaurant.restaurantName}}</mat-card-title>
+                    <mat-card-subtitle style="font-family:Comfortaa ;"><strong>{{restaurant.address.area}},{{restaurant.address.city}}</strong></mat-card-subtitle>
+                    <mat-card-subtitle style="font-family:Comfortaa ;height: 15px;">{{restaurant.foodType}}</mat-card-subtitle>
+                    <div>
+                    <span class="spn"><mat-icon class="icon">star</mat-icon>{{restaurant.rating}}</span>
+                    <a mat-button-matTooltip="Delete"  (click)="delete(restaurant.restaurantId)" style="margin-left: 20px;width: 5pxs;">
+                        <mat-icon class="favorite" style="margin-left: 150px;font-size: xx-large;">delete_outline</mat-icon>
+                       </a>
+                </div>  
+                     
+          </div>
+          
+        </mat-card>
+     </div>
+       </div>

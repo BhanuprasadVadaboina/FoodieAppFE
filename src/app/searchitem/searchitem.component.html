@@ -1,0 +1,27 @@
+<div style="background-color:rgb(70, 78, 81) ;margin-top:80px;display: flex;height: 250px;">
+    <img mat-card-image src={{resturantdata.image}} style="width:300px;height: 200px;border-radius: 10px ;margin-left: 180px;margin-top: 25px;" >
+        <div style="font-weight:500 ;font-size:40px;color: white;font-family:Garamond, serif ;font-stretch:extra-expanded;margin: 55px;">{{resturantdata.restaurantName}}<br/><br>
+    <span style="color:rgb(173, 171, 171) ;font-size:18px;font-style:  Arial, Helvetica, sans-serif;margin-left: 5px;">{{resturantdata.foodType }}<br/><br>  {{resturantdata.address.area}}, {{resturantdata.address.city}}  </span><br><br>
+    <span style="font-size:20px"><mat-icon class="icon">star</mat-icon>{{resturantdata.rating}}</span>
+        </div>
+</div>      
+<div *ngFor="let fd of res" >
+    <mat-card class="example-card" >
+    <mat-card-title-group style="justify-content: left;">
+
+                <div class="food">
+                    <img  src={{fd.image}}  width="200px" height="200px" style="margin-top:5px ;">
+                    <div style="width:530px ;margin-left: 20px;margin-top: 10px;">
+                        <span style="width:510px ;height: 80px;"><h2>{{fd.foodName}}</h2></span><br>
+                        <span style="width: 550px;height: 50px;">{{fd.description}}</span><br><br>
+                        {{fd.foodPrice | currency:"&#8377;"}}
+                    </div>
+                    <div class="cart" ><button class="crt" (click)="add2crt(fd)" >+</button><span *ngIf="foodname!=fd.foodName">ADD</span><span *ngIf="foodname==fd.foodName">{{count}}</span><button class="crt" (click)="remove(fd)">-</button>
+
+                </div>
+                    <hr>
+        
+      </div>
+    </mat-card-title-group>
+    </mat-card>
+    </div>

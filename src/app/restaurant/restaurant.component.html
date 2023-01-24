@@ -1,0 +1,62 @@
+<div class="slider" style="justify-content:center">
+  <div *ngIf="role=='ADMIN_USER'" style="background-color:black;width: 100px;margin-left: 1050px;margin-top: 20px;">
+    <button (click)="adminRes()" style="width: 180px;font-size:20px;font-weight:bold;">Add Restaurant</button>
+  </div>
+  <div class="centered" >
+   Discover the best food & drinks
+   <div style="border:ghostwhite; ">
+    <form (ngSubmit)="searchingItems(searchTxt.value)" style="display: flex;" *ngIf="role!='ADMIN_USER'">
+    <input matInput type="text"   placeholder='search by city' style="width:100% ;color:black;opacity: 0.7;border-radius: 10px;"  #searchTxt >
+    <button mat-icon-button style="margin-left: -40px;" >
+      <mat-icon  type="submit" matTooltip="search" style="color: black;">search</mat-icon>
+    </button>
+  </form>
+</div>
+  </div>
+</div>
+   
+<div>
+   <div style="display:flex;flex-wrap: wrap;margin-top: 10px;" *ngIf="role!='ADMIN_USER'">
+<div *ngFor= "let restaurant  of  restaurants " style="margin-left: 70px;margin-bottom: 30px;display: flex;flex-wrap: wrap;" >
+    <mat-card class="example-card"  style="height:360px ;width: 248px;">
+        <a routerLink="/items" style="text-decoration:none ;" (click)="items(restaurant)">   
+          <span>   
+            <img mat-card-image src={{restaurant.image}} style="width:280px;height: 200px;border-radius: 10px ;" >
+          </span>
+        </a>
+            <div>
+                <mat-card-title style="font-family:Comfortaa ;height: 45px;font-weight:bolder;font-size:21.5px;">{{restaurant.restaurantName}}</mat-card-title>
+                <mat-card-subtitle style="font-family:Comfortaa ;"><strong>{{restaurant.address.area}},{{restaurant.address.city}}</strong></mat-card-subtitle>
+                <mat-card-subtitle style="font-family:Comfortaa ;height: 15px;">{{restaurant.foodType}}</mat-card-subtitle>
+                <div style="display: flex;padding-top: 25px;">
+                <div class="spn"><mat-icon class="icon">star</mat-icon>{{restaurant.rating}}</div>
+                <button (click)="favorite(restaurant.restaurantId)" mat-button style="margin-left: 140px;">
+                 <mat-icon class="favorite" *ngIf="restaurant.restaurantId!=resId || status==false">favorite_border</mat-icon> <mat-icon class="favorite" *ngIf="restaurant.restaurantId==resId && status==true">favorite</mat-icon>
+                </button>
+            </div>       
+      </div>
+    </mat-card>
+ </div>
+ 
+   </div>
+   <mat-paginator [length]="this.restaurants.length"
+ [pageSize]="this.restaurants.length-5"
+ [pageSizeOptions]="[5, 10, 25, 100]"
+ aria-label="Select page"></mat-paginator>
+</div>
+
+ <div *ngIf="role=='ADMIN_USER'" style="margin-left: 80px;">
+ <div style="margin-left: 20px;display: flex;width:1000px ;font-size: larger;font-weight: bolder;height: 30px;margin-top: 20px;">
+    <!-- <span style="width: 150px;margin-left: 20px;">S.No</span> -->
+    <div style="margin-left: 10px;width: 200px;">RestaurantId</div><div style="width: 320px;">RestaurantName</div><div style="width: 300px;">Address</div>
+</div>
+ <div *ngFor= "let restaurant  of  restaurants " style="font-size: larger;margin-left: 50px;width: 1800px;display: flex;height:35px;">
+      <!-- <div style="width: 150px;">{{restaurant.sno}}</div> -->
+      <div style="width: 150px;">{{restaurant.restaurantId}}</div>
+      <div style="margin-left: 40px;width: 250px;">{{restaurant.restaurantName}}</div>
+      <div style="margin-left: 20px;width: 500px;">{{restaurant.address.state}},&nbsp;{{restaurant.address.city}},&nbsp;{{restaurant.address.area}}</div>
+        <button (click)="update(restaurant)" style="height: 30px;border: 0px;"><mat-icon>create</mat-icon></button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <button (click)="delete(restaurant.restaurantId)" style="height: 30px;border: 0px;"><mat-icon>delete</mat-icon></button>
+</div>
+</div>
+
+

@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Comfortaa:wght@300&family=Edu+SA+Beginner&family=Koulen&family=Lato:wght@100&family=Manrope:wght@200;500&family=Roboto:wght@100&display=swap');
+
+.spn{
+    background-color:rgb(92, 193, 104) ;
+    padding: 2.7px;
+    border-radius: 3px;
+}
+.icon{
+    font-size: 14px;
+    color: white;
+}
+.example-card:hover
+    {
+      transform: translate3D(0,-1px,0) scale(1.05);
+    
+    }
+    .example-card{
+        border-radius: 10px;
+        background-color: white;
+    }
+    .mat-card-title,.mat-card-subtitle{
+        color: black;
+        align-items: center;
+       }   
+    .example-full-width{
+      padding-right: 500px;
+      background-color: black;
+    }   
+    .favorite{
+      font-size: x-large;
+      color: red;     
+    }
+   
+   
+    .slider {
+        position: relative;
+        width: 100%;
+        height: 300px;
+       background-image: url(src\assets\meat-tomatoes-salat-fastfud-fast-food-sendvich-hamburger-pom.jpg);
+       background-size:cover;
+        overflow: hidden;
+        opacity: 0.8;
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+      }
+      .centered {
+        position: absolute;
+        top: 50%;
+        left: 15%;
+        color: white;
+         font-size: 4.4rem;
+          line-height: 1.2;
+          font-weight: 400;
+        font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      }
+      .centered1 {
+        position: absolute;
+        top: 50%;
+        left: 15%;
+        color:white;
+         font-size:medium;
+          line-height: 1;
+          font-weight: 100;
+        font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+      }
+  
