@@ -193,6 +193,7 @@ export class ItemComponent implements OnInit {
         response=>{
             this.cartItms=response;
             for(let fd of this.cartItms){
+              console.log(fd.foodName);
               if(fd.foodName==fdName){
                 this.count++;
                 this.foodname=fd.foodName;

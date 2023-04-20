@@ -29,6 +29,8 @@ import { SearchitemComponent } from './searchitem/searchitem.component';
 import { FavouriteComponent } from './favourite/favourite.component';
 import { EditRestaurantComponent } from './edit-restaurant/edit-restaurant.component';
 import {MatPaginatorModule} from '@angular/material/paginator';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'; 
+
 
 
 @NgModule({
@@ -65,7 +67,8 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     MatMenuModule,
     MatSnackBarModule,
     MatSelectModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatProgressSpinnerModule
     
     
   ],

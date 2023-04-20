@@ -89,6 +89,7 @@ this.resService.addRestaurant(this.restaurantForm.value).subscribe(
 
   getAllRestaurant(){
    
+    try{
     this.resService.getRestaurant().subscribe(
       response=>{
         this.restaurants=response;
@@ -103,8 +104,13 @@ this.resService.addRestaurant(this.restaurantForm.value).subscribe(
       }
     
     )
-    
+        
     console.log(localStorage.getItem('role'));
+    }
+    catch(error)
+    {
+      console.log(error);
+    }
    
   }
 
